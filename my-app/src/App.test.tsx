@@ -1,9 +1,33 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React, { useState } from 'react';
+import './App.css';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+function App() {
+  //Declare a new state variable, which we'll call "pokemonName"
+  const [pokemonName, setPokemonName] = useState("");
+  
+  return (
+    <div>
+      <h1>
+        Pokemon Search
+      </h1>
+
+      <div>
+        <label>Pokemon Name</label><br/>
+        <input type="text" id="pokemon-name" name="pokemon-name" onChange={e => setPokemonName(e.target.value)}/><br/>
+        <button onClick={search}>
+          Search
+        </button>
+      </div>
+
+      <p>
+        you have entered {pokemonName}
+      </p>
+    </div>
+  );
+
+  function search(){
+    alert("Search button has been clicked!");
+  }
+}
+
+export default App;
